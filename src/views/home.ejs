@@ -3,9 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Api Products</title>
 </head>
 <body>
-    <h1>Saludos</h1>
+    <header>
+        <h1 class="titleStyles">API CRUD</h1>
+        <div class="infoContainer">
+            <p>Ejemplo de api de alta, baja modificación y consulta de productos de indumentaria. Desarrollado en NodeJs, con MongoDb, como soporte de almacenamiento de datos, en su versión online. Cloudinary como almacenamiento online de imágenes.</p>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h3 class="titleStyles">GET</h3>
+            <div class="exampleContainer">
+                <div class="titlesContainer">
+                    <h2>Listado de productos:</h2>
+                    <h3>api/v1/products</h3>
+                </div>
+                <button class="btnShow">Ocultar ↑</button>
+                <pre class="jsonCode"> 
+                    {
+                        <b>"status":</b> 200,
+                        <b>"total":</b> 2,
+                        <b>"data":</b> [
+                            {
+                                <b>"_id":</b> "65216bd68520517e9ecc7f2f",
+                                <b>"name":</b> "Campera oversize",
+                                <b>"category":</b> "camperas",
+                                <b>"description":</b> "Campera de jean color verde militar, ideal para dias de primavera",
+                                <b>"images":</b> [
+                                    {
+                                        <b>"public_id":</b> "replit/mame0qlggwu6gyx8w8h5",
+                                        <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696689110/replit/mame0qlggwu6gyx8w8h5.jpg"
+                                    },
+                                    {
+                                        <b>"public_id":</b> "replit/mvyukvjyyfxsxhveptrm",
+                                        <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696689109/replit/mvyukvjyyfxsxhveptrm.png"
+                                    }
+                                ],
+                                <b>"size":</b> [
+                                    "L XL"
+                                ],
+                                <b>"price":</b> 54860,
+                                <b>"createdAt":</b> "2023-10-07T14:10:36.306Z",
+                                <b>"__v":</b> 0
+                            },
+                            {
+                                <b>"_id":</b> "6522a47026c62e31a356f76e",
+                                <b>"name":</b> "Pantalon Jean",
+                                <b>"category":</b> "pantalones",
+                                <b>"description"</b>: "Pantalon clasico de jean azul con bordados negros",
+                                <b>"images":</b> [
+                                    {
+                                        <b>"public_id":</b> "replit/fiyi4shozkhsqo42db5k",
+                                        <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696769135/replit/fiyi4shozkhsqo42db5k.jpg"
+                                    },
+                                    {
+                                        <b>"public_id":</b> "replit/egvyy3w6ltcqewfzaxkc",
+                                        <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696769135/replit/egvyy3w6ltcqewfzaxkc.png"
+                                    }
+                                ],
+                                <b>"size":</b> [
+                                    "44 al 48"
+                                ],
+                                <b>"price":</b> 26895,
+                                <b>"createdAt":</b> "2023-10-08T12:38:59.386Z",
+                                <b>"__v":</b> 0
+                            }
+                        ]
+                    }
+                </pre>
+            </div>
+            <div class="exampleContainer">
+                <div class="titlesContainer">
+                    <h2>Producto particular:</h2>
+                    <h3>api/v1/products/65216bd68520517e9ecc7f2f</h3>
+                </div>
+                <button class="btnShow">Ocultar ↑</button>
+                <pre class="jsonCode">
+                    {
+                        <b>"status":</b> 200,
+                        <b>"data":</b> {
+                            <b>"_id":</b> "65216bd68520517e9ecc7f2f",
+                            <b>"name":</b> "Campera oversize",
+                            <b>"category":</b> "camperas",
+                            <b>"description":</b> "Campera de jean color verde militar, ideal para dias de primavera",
+                            <b>"images":</b> [
+                                {
+                                    <b>"public_id":</b> "replit/mame0qlggwu6gyx8w8h5",
+                                    <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696689110/replit/mame0qlggwu6gyx8w8h5.jpg"
+                                },
+                                {
+                                    <b>"public_id":</b> "replit/mvyukvjyyfxsxhveptrm",
+                                    <b>"secure_url":</b> "https://res.cloudinary.com/duql5ghx0/image/upload/v1696689109/replit/mvyukvjyyfxsxhveptrm.png"
+                                }
+                            ],
+                            <b>"size":</b> [
+                                "L XL"
+                            ],
+                            <b>"price":</b> 54860,
+                            <b>"createdAt":</b> "2023-10-07T14:10:36.306Z",
+                            <b>"__v":</b> 0
+                        }
+                    }
+                </pre>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        &copy; 2023
+    </footer>
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>

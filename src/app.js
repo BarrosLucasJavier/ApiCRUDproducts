@@ -11,9 +11,11 @@ import homeRouter from "./routes/home.routes.js";
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use("/", homeRouter)
 app.use("/api/v1/products", productRouter)
