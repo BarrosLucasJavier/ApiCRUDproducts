@@ -115,23 +115,23 @@ const productController = {
         try {
             const { id } = req.params;
             const oldProduct = await productService.getOne(id);
-
+            
             if (!oldProduct) {
                 return res.status(404).json({
                     status: 404,
                     message: "The product is not found "
                 })
             }
-
+            
             const updatedProduct = {
-                name: req.body.name ?? oldProduct.name,
-                category: req.body.category ?? oldProduct.category,
-                description: req.body.description ?? oldProduct.description,
-                images: req.body.images ?? oldProduct.images,
-                size: req.body.size ?? oldProduct.size,
-                price: req.body.price ?? oldProduct.price,
+                name: req.body.name ? req.body.name : oldProduct.name,
+                category: req.body.category ? req.body.category : oldProduct.category,
+                description: req.body.description ? req.body.description : oldProduct.description,
+                images: req.body.images ? req.body.images : oldProduct.images,
+                size: req.body.size ? req.body.size : oldProduct.size,
+                price: req.body.price ? req.body.price : oldProduct.price,
             }
-
+            
             const response = await productService.update(id, updatedProduct);
 
             return res.status(200).json({

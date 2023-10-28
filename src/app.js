@@ -1,6 +1,7 @@
 import express  from "express";
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import  methodOverride  from 'method-override'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -12,6 +13,7 @@ import homeRouter from "./routes/home.routes.js";
 const app = express();
 app.use(express.json());
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

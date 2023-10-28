@@ -109,8 +109,39 @@
                     }
                 </pre>
             </div>
+            <div class="exampleContainer">
+                <div class="titlesContainer">
+                    <h2>Producto no encontrado</h2>
+                    <h3>api/v1/products/xx</h3>
+                </div>
+                <button class="btnShow">Ocultar ↑</button>
+                <pre class="jsonCode">
+                    {
+                        <b>"status":</b>404,
+                        <b>"message":</b>"El Producto no existe"
+                    }
+                </pre>
+            </div>
         </section>
-
+        <section>
+            <h3 class="titleStyles">POST</h3>
+            <div class="exampleContainer">
+                <div class="titlesContainer">
+                    <h2>Creación de Producto</h2>
+                    <h3>api/v1/products</h3>
+                </div>
+                <button class="btnShow">Ocultar ↑</button>
+                <pre class="jsonCode"> 
+                    <b>Campos Obligatorios:
+                        name:
+                        category:
+                    </b>
+                    <b>Campos opcionales:
+                        description, images, size, price.
+                    </b>
+                </pre>
+            </div>
+        </section>
     </main>
     <footer>
         &copy; 2023
