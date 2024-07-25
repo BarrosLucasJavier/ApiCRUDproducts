@@ -29,7 +29,7 @@ const productSchema = new Schema({
     color:{
         type:Array,
     },
-    collection:{
+    collectionName:{
         type:String,
     },
     brand:{

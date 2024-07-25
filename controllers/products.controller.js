@@ -51,7 +51,7 @@ const productController = {
                 price: req.body.price,
                 gender: req.body.gender,
                 color: req.body.color,
-                collection: req.body.collection,
+                collectionName: req.body.collectionName,
                 brand: req.body.brand,
                 quantity: req.body.quantity,
             };
@@ -137,7 +137,7 @@ const productController = {
                 price: req.body.price ? req.body.price : oldProduct.price,
                 gender: req.body.gender ? req.body.gender : oldProduct.gender,
                 color: req.body.color ? req.body.color : oldProduct.color,
-                collection: req.body.collection ? req.body.collection : oldProduct.collection,
+                collectionName: req.body.collectionName ? req.body.collectionName : oldProduct.collectionName,
                 brand: req.body.brand ? req.body.brand : oldProduct.brand,
                 quantity: req.body.quantity ? req.body.quantity : oldProduct.quantity,
             }
