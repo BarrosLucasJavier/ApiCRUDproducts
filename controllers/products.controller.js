@@ -54,6 +54,7 @@ const productController = {
                 collectionName: req.body.collectionName,
                 brand: req.body.brand,
                 quantity: req.body.quantity,
+                rating: req.body.rating,
             };
 
             if (req.files?.image) {
@@ -140,6 +141,7 @@ const productController = {
                 collectionName: req.body.collectionName ? req.body.collectionName : oldProduct.collectionName,
                 brand: req.body.brand ? req.body.brand : oldProduct.brand,
                 quantity: req.body.quantity ? req.body.quantity : oldProduct.quantity,
+                rating: req.body.rating ? req.body.rating : oldProduct.rating,
             }
             
             const response = await productService.update(id, updatedProduct);

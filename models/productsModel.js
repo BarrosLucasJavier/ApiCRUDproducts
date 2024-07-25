@@ -38,6 +38,9 @@ const productSchema = new Schema({
     quantity:{
         type:Number,
     },
+    rating:{
+        type:Number,
+    },
     createdAt:{
         type:Date,
         default: new Date(),
