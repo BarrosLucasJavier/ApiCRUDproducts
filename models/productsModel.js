@@ -23,6 +23,21 @@ const productSchema = new Schema({
     price:{
         type: Number,
     },
+    gender:{
+        type:String,
+    },
+    color:{
+        type:Array,
+    },
+    collection:{
+        type:String,
+    },
+    brand:{
+        type:String,
+    },
+    quantity:{
+        type:Number,
+    },
     createdAt:{
         type:Date,
         default: new Date(),

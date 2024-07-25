@@ -49,6 +49,11 @@ const productController = {
                 description: req.body.description,
                 size: req.body.size,
                 price: req.body.price,
+                gender: req.body.gender,
+                color: req.body.color,
+                collection: req.body.collection,
+                brand: req.body.brand,
+                quantity: req.body.quantity,
             };
 
             if (req.files?.image) {
@@ -130,6 +135,11 @@ const productController = {
                 images: req.body.images ? req.body.images : oldProduct.images,
                 size: req.body.size ? req.body.size : oldProduct.size,
                 price: req.body.price ? req.body.price : oldProduct.price,
+                gender: req.body.gender ? req.body.gender : oldProduct.gender,
+                color: req.body.color ? req.body.color : oldProduct.color,
+                collection: req.body.collection ? req.body.collection : oldProduct.collection,
+                brand: req.body.brand ? req.body.brand : oldProduct.brand,
+                quantity: req.body.quantity ? req.body.quantity : oldProduct.quantity,
             }
             
             const response = await productService.update(id, updatedProduct);
