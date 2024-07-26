@@ -3,6 +3,7 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import  methodOverride  from 'method-override'
 import { connectToDB } from './utils/mongoose.js'
+import cors from 'cors'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+app.use(cors());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
