@@ -55,6 +55,9 @@ const productController = {
                 brand: req.body.brand,
                 quantity: req.body.quantity,
                 rating: req.body.rating,
+                discount: req.body.discount,
+                release_date: req.body.release_date,
+                shipping_cost: req.body.shipping_cost,
             };
 
             if (req.files?.image) {
@@ -142,6 +145,9 @@ const productController = {
                 brand: req.body.brand ? req.body.brand : oldProduct.brand,
                 quantity: req.body.quantity ? req.body.quantity : oldProduct.quantity,
                 rating: req.body.rating ? req.body.rating : oldProduct.rating,
+                discount: req.body.discount ? req.body.discount : oldProduct.discount,
+                release_date: req.body.release_date ? req.body.release_date : oldProduct.release_date,
+                shipping_cost: req.body.shipping_cost ? req.body.shipping_cost : oldProduct.shipping_cost,
             }
             
             const response = await productService.update(id, updatedProduct);

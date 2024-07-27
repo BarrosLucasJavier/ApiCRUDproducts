@@ -41,6 +41,15 @@ const productSchema = new Schema({
     rating:{
         type:Number,
     },
+    discount:{
+        type:Number,
+    },
+    release_date:{
+        type:Date,
+    },
+    shipping_cost:{
+        type:Number,
+    },
     createdAt:{
         type:Date,
         default: new Date(),
