@@ -34,7 +34,6 @@ const productController = {
         }
     },
     store: async (req, res) => {
-
         try {
             if (!req.body.name) {
                 return res.status(400).json({
@@ -162,6 +161,20 @@ const productController = {
                 status: 500,
                 isUpdate: false,
                 message: "Error al actualizar producto"
+            })
+        }
+    },
+    latest: async (req, res) => {
+        try {
+            const latestProducts = await productService.latest();
+            return res.status(200).json({
+                status: 200,
+                data: latestProducts
+            })
+        } catch (error) {
+            return res.status(500).json({
+                status: 500,
+                message: error.message
             })
         }
     }

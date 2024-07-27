@@ -44,5 +44,12 @@ export const productService = {
         } catch (error) {
             return error
         }
+    },
+    latest:()=>{
+        try {
+            return Product.find().sort({release_date:-1}).limit(20)
+        } catch (error) {
+            return error
+        }
     }
 }
