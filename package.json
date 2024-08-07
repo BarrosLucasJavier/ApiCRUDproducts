@@ -1,7 +1,7 @@
 {
   "name": "api-catalogo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api of cloth products",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -18,7 +18,6 @@
     "cloudinary": "^1.40.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "fs-extra": "^11.1.1",

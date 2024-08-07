@@ -93,7 +93,7 @@ const productController = {
         try {
             const { id } = req.params;
             const response = await productService.delete(id);
-            
+
             if (!response) return res.status(404).json({
                 message: 'No existe el producto',
                 error: response
@@ -123,14 +123,14 @@ const productController = {
         try {
             const { id } = req.params;
             const oldProduct = await productService.getOne(id);
-            
+
             if (!oldProduct) {
                 return res.status(404).json({
                     status: 404,
                     message: "The product is not found "
                 })
             }
-            
+
             const updatedProduct = {
                 name: req.body.name ? req.body.name : oldProduct.name,
                 category: req.body.category ? req.body.category : oldProduct.category,
@@ -148,7 +148,7 @@ const productController = {
                 release_date: req.body.release_date ? req.body.release_date : oldProduct.release_date,
                 shipping_cost: req.body.shipping_cost ? req.body.shipping_cost : oldProduct.shipping_cost,
             }
-            
+
             const response = await productService.update(id, updatedProduct);
 
             return res.status(200).json({
