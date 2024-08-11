@@ -1,15 +1,39 @@
-import { productService } from '../services/productService.js';
+import Product from '../models/productsModel.js';
 import { uploadImage, deleteImage } from '../utils/cloudinary.js'
 import fs from 'fs-extra'
 
 const productController = {
     getAll: async (req, res) => {
         try {
-            const allProducts = await productService.getAll();
+
+            let {
+                limit = 10,
+                page = 1,
+                order = 'ASC',
+                sortBy = 'release_date',
+                search = ''
+            } = req.query;
+
+            limit = limit > 20 ? 20 : limit;
+            page = +page;
+            order = order === 'ASC' ? 1 : -1;
+
+            const query = { name: { $regex: search, $options: 'i' } };
+
+            const products = await Product.find(query)
+                .skip((page - 1) * limit)
+                .limit(limit)
+                .sort({ [sortBy]: order });
+
+            const allProducts = await Product.countDocuments(query);
+            const totalPages = Math.ceil(allProducts / limit)
+
             return res.status(200).json({
                 status: 200,
-                total: allProducts.length,
-                data: allProducts
+                data: products,
+                total: allProducts,
+                totalPages: totalPages,
+                page: page,
             })
         } catch (error) {
             return res.status(500).json({
@@ -21,7 +45,7 @@ const productController = {
     getOne: async (req, res) => {
         try {
             const { id } = req.params;
-            const product = await productService.getOne(id);
+            const product = await Product.findOne({ _id: id });
             return res.status(200).json({
                 status: 200,
                 data: product
@@ -76,7 +100,7 @@ const productController = {
                 }
             }
 
-            const productStored = await productService.store(newProduct);
+            const productStored = await Product.create(newProduct);
             return res.status(200).json({
                 data: productStored
             })
@@ -92,7 +116,11 @@ const productController = {
     delete: async (req, res) => {
         try {
             const { id } = req.params;
-            const response = await productService.delete(id);
+            const response = await Product.findByIdAndUpdate(
+                id,
+                { deletedAt: new Date },
+                { new: true }
+            );
 
             if (!response) return res.status(404).json({
                 message: 'No existe el producto',
@@ -122,7 +150,7 @@ const productController = {
     update: async (req, res) => {
         try {
             const { id } = req.params;
-            const oldProduct = await productService.getOne(id);
+            const oldProduct = await Product.findOne({ _id: id });
 
             if (!oldProduct) {
                 return res.status(404).json({
@@ -149,7 +177,11 @@ const productController = {
                 shipping_cost: req.body.shipping_cost ? req.body.shipping_cost : oldProduct.shipping_cost,
             }
 
-            const response = await productService.update(id, updatedProduct);
+            const response = await Product.updateOne(
+                { _id: id },
+                { $set: { ...updatedProduct } },
+                { new: true }
+            );
 
             return res.status(200).json({
                 status: 200,
@@ -164,20 +196,6 @@ const productController = {
             })
         }
     },
-    latest: async (req, res) => {
-        try {
-            const latestProducts = await productService.latest();
-            return res.status(200).json({
-                status: 200,
-                data: latestProducts
-            })
-        } catch (error) {
-            return res.status(500).json({
-                status: 500,
-                message: error.message
-            })
-        }
-    }
 }
 
 export default productController;
