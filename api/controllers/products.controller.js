@@ -11,7 +11,9 @@ const productController = {
                 page = 1,
                 order = 'ASC',
                 sortBy = 'release_date',
-                search = ''
+                search = '',
+                category='',
+                gender=''
             } = req.query;
 
             limit = limit > 20 ? 20 : limit;
@@ -19,6 +21,13 @@ const productController = {
             order = order === 'ASC' ? 1 : -1;
 
             const query = { name: { $regex: search, $options: 'i' } };
+
+            if (category) {
+                query.category = category;
+            }
+            if (gender) {
+                query.gender = gender;
+            }
 
             const products = await Product.find(query)
                 .skip((page - 1) * limit)
