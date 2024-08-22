@@ -12,8 +12,8 @@ const productController = {
                 order = 'ASC',
                 sortBy = 'release_date',
                 search = '',
-                category='',
-                gender=''
+                category = '',
+                gender = ''
             } = req.query;
 
             limit = limit > 20 ? 20 : limit;
@@ -205,6 +205,24 @@ const productController = {
             })
         }
     },
+    categories: async (req, res) => {
+        try {
+            const categories = await Product.distinct('category');
+            const amount = categories.length;
+
+            return res.status(200).json({
+                status: 200,
+                data: categories,
+                amount: amount,
+            })
+
+        } catch (error) {
+            return res.status(404).json({
+                status: 404,
+                message: error
+            })
+        }
+    }
 }
 
 export default productController;

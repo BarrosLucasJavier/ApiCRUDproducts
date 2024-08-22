@@ -7,6 +7,9 @@ const productRouter = Router();
 // GET - http://localhost:3000/api/v1/products/
 productRouter.get("/", productController.getAll);
 
+// GET - http://localhost:3000/api/v1/categories/
+productRouter.get("/categories", productController.categories);
+
 // GET - http://localhost:3000/api/v1/products/:id
 productRouter.get("/:id", productController.getOne);
 
